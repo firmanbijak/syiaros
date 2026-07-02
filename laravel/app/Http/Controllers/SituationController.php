@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSituationRequest;
-use App\Http\Requests\UpdateSituationRequest;
+use App\Http\Requests\SituationStoreRequest;
+use App\Http\Requests\SituationUpdateRequest;
 use App\Models\Journey;
 use App\Models\Situation;
 use Illuminate\Http\RedirectResponse;
@@ -32,7 +32,7 @@ class SituationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSituationRequest $request): RedirectResponse
+    public function store(SituationStoreRequest $request): RedirectResponse
     {
         Situation::create($request->validated());
 
@@ -61,7 +61,7 @@ class SituationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSituationRequest $request, Situation $situation): RedirectResponse
+    public function update(SituationUpdateRequest $request, Situation $situation): RedirectResponse
     {
         $situation->update($request->validated());
 

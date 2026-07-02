@@ -66,11 +66,7 @@
             <div class="row mb-4">
                 <div class="col-sm-3 fw-semibold text-muted">Status</div>
                 <div class="col-sm-9">
-                    @if($situation->status)
-                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Active</span>
-                    @else
-                        <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill">Inactive</span>
-                    @endif
+                    <x-status-badge :status="$situation->status" />
                 </div>
             </div>
 
