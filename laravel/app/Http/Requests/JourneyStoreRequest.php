@@ -25,7 +25,7 @@ class JourneyStoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:journeys,slug'],
             'description' => ['nullable', 'string'],
-            'sort_order' => ['nullable', 'integer', 'min:0'],
+            'sort_order' => ['required', 'integer', 'min:0'],
             'status' => ['required', 'boolean'],
         ];
     }

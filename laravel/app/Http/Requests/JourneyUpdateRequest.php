@@ -39,7 +39,7 @@ class JourneyUpdateRequest extends FormRequest
                 Rule::unique('journeys', 'slug')->ignore($journeyId),
             ],
             'description' => ['nullable', 'string'],
-            'sort_order' => ['nullable', 'integer', 'min:0'],
+            'sort_order' => ['required', 'integer', 'min:0'],
             'status' => ['required', 'boolean'],
         ];
     }
