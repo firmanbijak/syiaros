@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\JourneyController;
 use App\Http\Controllers\PlaybookController;
 use App\Http\Controllers\ProductController;
@@ -18,3 +19,4 @@ Route::resource('products', ProductController::class);
 Route::resource('journeys', JourneyController::class);
 Route::resource('situations', SituationController::class);
 Route::resource('playbooks', PlaybookController::class);
+Route::resource('assets', AssetController::class);

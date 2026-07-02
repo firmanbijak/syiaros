@@ -176,7 +176,7 @@
         <div class="py-3">
             <nav class="nav flex-column">
                 <!-- Dashboard link -->
-                <a href="#" class="nav-link-custom {{ request()->routeIs('products.*') || request()->routeIs('journeys.*') || request()->routeIs('situations.*') || request()->routeIs('playbooks.*') ? '' : 'active' }}">
+                <a href="#" class="nav-link-custom {{ request()->routeIs('products.*') || request()->routeIs('journeys.*') || request()->routeIs('situations.*') || request()->routeIs('playbooks.*') || request()->routeIs('assets.*') ? '' : 'active' }}">
                     <i class="bi bi-speedometer2"></i> Dashboard
                 </a>
 
@@ -194,7 +194,7 @@
                 <a href="{{ route('playbooks.index') }}" class="nav-link-custom {{ request()->routeIs('playbooks.*') ? 'active' : '' }}">
                     <i class="bi bi-journal-bookmark"></i> Playbooks
                 </a>
-                <a href="#" class="nav-link-custom">
+                <a href="{{ route('assets.index') }}" class="nav-link-custom {{ request()->routeIs('assets.*') ? 'active' : '' }}">
                     <i class="bi bi-file-earmark-richtext"></i> Assets
                 </a>
                 <a href="#" class="nav-link-custom">
