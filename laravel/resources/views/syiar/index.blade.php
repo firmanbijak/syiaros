@@ -11,7 +11,7 @@
         <!-- Action Cards Grid -->
         <div class="row g-3">
             <div class="col-6">
-                <a href="#" class="action-card p-3">
+                <a href="{{ route('syiar.start') }}" class="action-card p-3">
                     <div class="card-icon">🚀</div>
                     <div class="card-title">Mulai Syiar</div>
                     <div class="card-text">Sebarkan materi kebaikan</div>

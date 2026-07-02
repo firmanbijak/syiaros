@@ -176,7 +176,7 @@
         <div class="py-3">
             <nav class="nav flex-column">
                 <!-- Dashboard link -->
-                <a href="#" class="nav-link-custom {{ request()->routeIs('products.*') || request()->routeIs('journeys.*') ? '' : 'active' }}">
+                <a href="#" class="nav-link-custom {{ request()->routeIs('products.*') || request()->routeIs('journeys.*') || request()->routeIs('situations.*') ? '' : 'active' }}">
                     <i class="bi bi-speedometer2"></i> Dashboard
                 </a>
 
@@ -188,7 +188,7 @@
                 <a href="{{ route('journeys.index') }}" class="nav-link-custom {{ request()->routeIs('journeys.*') ? 'active' : '' }}">
                     <i class="bi bi-signpost-split"></i> Journeys
                 </a>
-                <a href="#" class="nav-link-custom">
+                <a href="{{ route('situations.index') }}" class="nav-link-custom {{ request()->routeIs('situations.*') ? 'active' : '' }}">
                     <i class="bi bi-patch-question"></i> Situations
                 </a>
                 <a href="#" class="nav-link-custom">
@@ -244,12 +244,9 @@
             @endif
 
             <!-- Page Title Header -->
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800 fw-bold">@yield('page-title', 'Dashboard')</h1>
-                <div>
-                    @yield('page-actions')
-                </div>
-            </div>
+            <x-page-header :title="$__env->yieldContent('page-title', 'Dashboard')">
+                @yield('page-actions')
+            </x-page-header>
 
             <!-- Page Dynamic Content -->
             @yield('content')

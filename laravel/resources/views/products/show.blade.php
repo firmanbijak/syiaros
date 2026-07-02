@@ -41,18 +41,7 @@
             <div class="row mb-4">
                 <div class="col-sm-3 fw-semibold text-muted">Status</div>
                 <div class="col-sm-9">
-                    @php
-                        $statusClass = match($product->status) {
-                            'active' => 'bg-success-subtle text-success',
-                            'draft' => 'bg-warning-subtle text-warning',
-                            'inactive' => 'bg-secondary-subtle text-secondary',
-                            'archived' => 'bg-danger-subtle text-danger',
-                            default => 'bg-light text-dark'
-                        };
-                    @endphp
-                    <span class="badge px-3 py-2 rounded-pill {{ $statusClass }}">
-                        {{ ucfirst($product->status) }}
-                    </span>
+                    <x-status-badge :status="$product->status" />
                 </div>
             </div>
 

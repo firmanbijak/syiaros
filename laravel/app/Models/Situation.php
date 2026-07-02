@@ -22,8 +22,20 @@ class Situation extends Model
         'slug',
         'description',
         'sort_order',
-        'is_active',
+        'status',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'status' => 'boolean',
+        ];
+    }
 
     /**
      * Get the journey that owns the situation.
