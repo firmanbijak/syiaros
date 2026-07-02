@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JourneyStoreRequest;
+use App\Http\Requests\JourneyUpdateRequest;
 use App\Models\Journey;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class JourneyController extends Controller
@@ -32,24 +32,9 @@ class JourneyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(JourneyStoreRequest $request): RedirectResponse
     {
-        $request->merge([
-            'status' => $request->has('status'),
-            'sort_order' => $request->input('sort_order') ?? 0,
-        ]);
-
-        $validated = $request->validate([
-            'product_id' => ['required', 'exists:products,id'],
-            'code' => ['required', 'string', 'max:20', 'unique:journeys,code'],
-            'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:journeys,slug'],
-            'sort_order' => ['required', 'integer', 'min:0'],
-            'status' => ['required', 'boolean'],
-            'description' => ['nullable', 'string'],
-        ]);
-
-        Journey::create($validated);
+        Journey::create($request->validated());
 
         return redirect()->route('journeys.index')
             ->with('success', 'Journey created successfully.');
@@ -76,34 +61,9 @@ class JourneyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Journey $journey): RedirectResponse
+    public function update(JourneyUpdateRequest $request, Journey $journey): RedirectResponse
     {
-        $request->merge([
-            'status' => $request->has('status'),
-            'sort_order' => $request->input('sort_order') ?? 0,
-        ]);
-
-        $validated = $request->validate([
-            'product_id' => ['required', 'exists:products,id'],
-            'code' => [
-                'required',
-                'string',
-                'max:20',
-                Rule::unique('journeys', 'code')->ignore($journey->id),
-            ],
-            'name' => ['required', 'string', 'max:255'],
-            'slug' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('journeys', 'slug')->ignore($journey->id),
-            ],
-            'sort_order' => ['required', 'integer', 'min:0'],
-            'status' => ['required', 'boolean'],
-            'description' => ['nullable', 'string'],
-        ]);
-
-        $journey->update($validated);
+        $journey->update($request->validated());
 
         return redirect()->route('journeys.index')
             ->with('success', 'Journey updated successfully.');
