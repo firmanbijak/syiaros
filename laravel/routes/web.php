@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JourneyController;
+use App\Http\Controllers\PlaybookController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SituationController;
 use App\Http\Controllers\Syiar\HomeController;
@@ -16,3 +17,4 @@ Route::get('/syiar/start', [HomeController::class, 'start'])->name('syiar.start'
 Route::resource('products', ProductController::class);
 Route::resource('journeys', JourneyController::class);
 Route::resource('situations', SituationController::class);
+Route::resource('playbooks', PlaybookController::class);

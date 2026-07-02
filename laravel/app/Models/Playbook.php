@@ -21,8 +21,20 @@ class Playbook extends Model
         'title',
         'objective',
         'sort_order',
-        'is_active',
+        'status',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'status' => 'boolean',
+        ];
+    }
 
     /**
      * Get the situation that owns the playbook.
