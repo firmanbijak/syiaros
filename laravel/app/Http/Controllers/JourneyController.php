@@ -41,7 +41,7 @@ class JourneyController extends Controller
 
         $validated = $request->validate([
             'product_id' => ['required', 'exists:products,id'],
-            'code' => ['required', 'string', 'max:255', 'unique:journeys,code'],
+            'code' => ['required', 'string', 'max:20', 'unique:journeys,code'],
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:journeys,slug'],
             'sort_order' => ['required', 'integer', 'min:0'],
@@ -88,7 +88,7 @@ class JourneyController extends Controller
             'code' => [
                 'required',
                 'string',
-                'max:255',
+                'max:20',
                 Rule::unique('journeys', 'code')->ignore($journey->id),
             ],
             'name' => ['required', 'string', 'max:255'],

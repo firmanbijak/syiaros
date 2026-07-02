@@ -31,8 +31,9 @@
                             <th scope="col" class="py-3">Product</th>
                             <th scope="col" class="py-3">Code</th>
                             <th scope="col" class="py-3">Name</th>
+                            <th scope="col" class="py-3">Sort Order</th>
                             <th scope="col" class="py-3">Status</th>
-                            <th scope="col" class="text-end pe-4 py-3" style="width: 180px;">Action</th>
+                            <th scope="col" class="text-end pe-4 py-3" style="width: 180px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@
                                 <td><span class="badge bg-light text-dark border px-2 py-1.5">{{ $journey->product->name ?? 'N/A' }}</span></td>
                                 <td><code>{{ $journey->code }}</code></td>
                                 <td><span class="fw-bold text-dark">{{ $journey->name }}</span></td>
+                                <td>{{ $journey->sort_order }}</td>
                                 <td>
                                     @if($journey->status)
                                         <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Active</span>
