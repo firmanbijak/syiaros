@@ -17,12 +17,25 @@ class Journey extends Model
      */
     protected $fillable = [
         'product_id',
+        'code',
         'name',
         'slug',
         'description',
         'sort_order',
         'status',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'status' => 'boolean',
+        ];
+    }
 
     /**
      * Get the product that owns the journey.

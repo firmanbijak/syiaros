@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('journeys', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->integer('sort_order')->default(0);
-            $table->enum('status', ['draft', 'active', 'inactive', 'archived'])->default('draft');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
